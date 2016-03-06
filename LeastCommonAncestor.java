@@ -5,50 +5,55 @@ public class LeastCommonAncestor {
 	public static void main(String[] args) {
 
 		
-		Node Node1= new Node(30);
-		Node Node2= new Node(25);
-		Node Node3= new Node(40);
-		Node Node4= new Node(40);
-		Node Node5= new Node(22);
-		Node Node6= new Node(27);
-		Node Node7= new Node(35);
-		Node Node8= new Node(45);
-
-		Node1.left=Node2;
-		Node1.right = Node3;
-		Node2.right=Node6;
-		Node2.left = Node5;
+		TreeNode TreeNode6= new TreeNode(6);
+		TreeNode TreeNode2= new TreeNode(2);
+		TreeNode TreeNode8= new TreeNode(8);
+		TreeNode TreeNode0= new TreeNode(0);
+		TreeNode TreeNode4= new TreeNode(4);
+		TreeNode TreeNode7= new TreeNode(7);
+		TreeNode TreeNode9= new TreeNode(9);
+		TreeNode TreeNode3= new TreeNode(3);
+		TreeNode TreeNode5= new TreeNode(5);
+	
+		TreeNode6.left = TreeNode2;
+		TreeNode6.right = TreeNode8;
+		TreeNode2.left = TreeNode0;
+		TreeNode2.right = TreeNode4;
+		TreeNode8.left =TreeNode7;
+		TreeNode8.right = TreeNode9;
+		TreeNode4.left =TreeNode3;
+		TreeNode4.right=TreeNode5;
 		
-		Node3.right=Node7;
-		Node3.left = Node8;
+		
+		
+		
 
-		System.out.println(lca(Node1,Node5,Node8).data);
+		System.out.println(lowestCommonAncestor(TreeNode6,TreeNode5,TreeNode3).data);
 		
 	}
-
-	public static Node lca(Node root, Node n1, Node n2) {
+	public static TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
 
 		if (root == null) {
 			return null;
 		}
-		if (n1 == null && n2 == null) {
+		if (p == null && q == null) {
 			return null;
 		}
-		if (n1.data < root.data && n2.data < root.data) {
-			return root = root.left;
-		} else if (n1.data > root.data && n2.data > root.data) {
-			return root = root.right;
+		if (p.data < root.data && q.data < root.data) {
+			return root = lowestCommonAncestor(root.left,p,q);
+		} else if (p.data > root.data && q.data > root.data) {
+			return root = lowestCommonAncestor(root.right,p,q);
 		}
 		return root;
 	}
 }
 
-class Node {
+class TreeNode {
 
 	int data;
-	Node left, right;
+	TreeNode left, right;
 
-	Node(int item) {
+	TreeNode(int item) {
 		data = item;
 		left = right = null;
 	}
