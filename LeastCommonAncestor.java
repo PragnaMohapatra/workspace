@@ -21,14 +21,15 @@ public class LeastCommonAncestor {
 		TreeNode2.right = TreeNode4;
 		TreeNode8.left =TreeNode7;
 		TreeNode8.right = TreeNode9;
-		TreeNode4.left =TreeNode3;
-		TreeNode4.right=TreeNode5;
+		/*TreeNode4.left =TreeNode3;
+		TreeNode4.right=TreeNode5;*/
 		
 		
 		
 		
 
-		System.out.println(lowestCommonAncestor(TreeNode6,TreeNode5,TreeNode3).data);
+		//System.out.println(lowestCommonAncestor(TreeNode6,TreeNode5,TreeNode3).data);
+		System.out.println(reverseTree(TreeNode6).data);
 		
 	}
 	public static TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
@@ -44,6 +45,20 @@ public class LeastCommonAncestor {
 		} else if (p.data > root.data && q.data > root.data) {
 			return root = lowestCommonAncestor(root.right,p,q);
 		}
+		return root;
+	}
+	public static TreeNode reverseTree(TreeNode root){
+		
+		if(root==null){
+			return null;
+		}
+		reverseTree(root.left);
+		reverseTree(root.right);
+		
+		TreeNode temp = new TreeNode(0);
+		temp = root.left;
+		root.left=root.right;
+		root.right = temp;
 		return root;
 	}
 }
