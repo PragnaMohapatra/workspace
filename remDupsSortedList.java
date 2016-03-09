@@ -18,26 +18,22 @@ public class remDupsSortedList {
 
 	public static ListNode deleteDuplicates(ListNode head) {
 		if (head == null) {
-			return null;
+			return head;
 		}
 		if (head.next == null) {
 			return head;
 		}
-		ListNode iterator = new ListNode(0);
-		iterator = head;
-		ListNode current = new ListNode(0);
-		current=head;
-		while (iterator != null) {
-			if (iterator.val == iterator.next.val) {
-				iterator = iterator.next;
-				continue;
-			} else {
-				current.next = iterator.next;
-				current = current.next;
-				iterator = iterator.next;
+		
+		ListNode p = new ListNode(0);
+		p=head;
+		
+		while(p!=null && p.next!=null)
+			if(p.val==p.next.val){
+				p.next=p.next.next;
+			}else{
+				p = p.next;
 			}
-		}
-		current.next=null;
-		return current;
+		
+		return head;
 	}
 }
