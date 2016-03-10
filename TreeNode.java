@@ -40,10 +40,45 @@ public class TreeNode {
 		/*System.out.println(test);
 		test.inOrderTraversal(test.root);
 		System.out.println(test.findTheDepth(test.root));*/
-		List<Integer> input = new ArrayList<Integer>();
+		/*List<Integer> input = new ArrayList<Integer>();
 		System.out.println(BST.isSameTreeNode(TreeNode1, TreeNode1));
-		System.out.println(input);
+		System.out.println(input);*/
 		
+		boolean numOfElement = isBalanced(test.root);
+		System.out.println(numOfElement);
+		
+	}
+
+	private static int fetchHeight(TreeNode root) {
+		if(root==null){
+			return 0;
+		}
+		int leftHeight = fetchHeight(root.leftnode);
+		int rightHeight = fetchHeight(root.rightnode);
+		return Math.max(leftHeight, rightHeight)+1;
+	}
+
+	private static int countElement(TreeNode root) {
+		if(root==null){
+			return 0;
+		}
+		return countElement(root.leftnode)+1+countElement(root.rightnode);
+		
+	}
+	
+	private static boolean isBalanced(TreeNode root){
+		if(root==null){
+			return true;
+		}
+		
+		int leftHeight =fetchHeight(root.leftnode);
+		int rightHeight = fetchHeight(root.rightnode);
+		
+		if(Math.abs(leftHeight-rightHeight)>1){
+			return false;
+		}
+		
+		return isBalanced(root.leftnode)&&isBalanced(root.rightnode);
 	}
 
 }
@@ -135,11 +170,27 @@ class BST {
 		if(node==null){
 			return list;
 		}
-		
 		list=preOrder(node.leftnode,list);
 		list.add(node.value);
 		list=preOrder(node.rightnode,list);
 		
 		return list;
+	}
+	
+	public static int countElement(TreeNode root){
+		if(root==null){
+			return 0;
+		}
+		return countElement(root.leftnode)+1+countElement(root.rightnode);
+	}
+	
+	public static int fetchHeight(TreeNode root){
+		if(root==null){
+			return -1;
+		}
+		int leftHeight = fetchHeight(root.leftnode);
+		int rightHeight = fetchHeight(root.rightnode);
+		
+		return 1+Math.max(leftHeight, rightHeight);
 	}
 }
