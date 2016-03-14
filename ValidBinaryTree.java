@@ -1,4 +1,5 @@
 package com.amazon.interview.lastHuddle;
+import com.amazon.interview.lastHuddle.TreeNode;
 
 public class ValidBinaryTree {
 	public static void main(String[] args) {
