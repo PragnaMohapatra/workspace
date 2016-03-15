@@ -4,7 +4,7 @@ public class PowerOfThree {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		isPowerOfThree(45);
+		System.out.println(isPowerOfThree(19682));
 	}
 
 	public static boolean isPowerOfThree(int n) {
@@ -12,12 +12,14 @@ public class PowerOfThree {
 		if (n == 3 || n == 1) {
 			return true;
 		}
-		boolean result = false;
-		if (n != 0 && n % 3 == 0) {
-			result = isPowerOfThree(n / 3);
-		} else {
-			return result;
+		if(n%3!=0){
+			return false;
 		}
-		return result;
+		double val = Math.log(n) / Math.log(3);
+		double rounded = (double) Math.round(val * 10000) / 10000;
+		if (Math.ceil(val) - rounded == 0) {
+			return true;
+		}
+		return false;
 	}
 }

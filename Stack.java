@@ -9,22 +9,23 @@ public class Stack {
 		storage = new int[capacity];
 	}
 
-	public void put(int num) {
+	public boolean put(int num) {
 		System.out.println("Size :: "+(size));
 		System.out.println("Capacity :: "+ capacity);
 		if(size==capacity){
 			System.out.println("The Stack is full");
-			return;
+			return false;
 		}
 		storage[size]=num;
 		size++;
+		return true;
 	}
 	
 	public int pop(){
 		int value=0;
 		if(size==0){
 			System.out.println("The statck is empty");
-			return 0;
+			return -1;
 		}
 		size--;
 		value = storage[size];
@@ -33,7 +34,7 @@ public class Stack {
 	
 	public int peek(){
 		if(size==0){
-			System.out.println("The statck is siz");
+			System.out.println("The statck is empty");
 		}
 		return storage[size];
 	}
