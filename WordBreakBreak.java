@@ -17,7 +17,7 @@ public class WordBreakBreak {
 		ArrayList<String> list = new ArrayList<String>();
 
 		WordBreakBreak break1 = new WordBreakBreak();
-		list = (ArrayList<String>) fetchWords(list, s, dict);
+		list = (ArrayList<String>) break1.fetchWords(list, s, dict);
 		StringBuffer sb = new StringBuffer();
 
 		for (int i = 0; i < list.size(); i++) {
@@ -27,12 +27,10 @@ public class WordBreakBreak {
 			sb.append(list.get(i) + " ");
 		}
 		String[] finalRes = sb.toString().split(",");
-		List<String> result = new ArrayList<String>();
+		ArrayList<String> result = new ArrayList<String>();
 		for (String vals : finalRes) {
 			result.add(vals.trim());
 		}
-
-		
 
 	}
 
